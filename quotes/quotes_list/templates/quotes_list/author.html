@@ -1,0 +1,14 @@
+{% extends 'quotes_list/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title m-0">{{ author.fullname }}</h2>
+    </div>
+    <div class="card-body">
+        <p><b>Born:</b> {{ author.born_date }} in {{ author.born_location }}</p>
+        <p><b>Description:</b></p>
+        <p>{{ author.description }}</p>
+    </div>
+</div>
+{% endblock %}

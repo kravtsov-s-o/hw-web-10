@@ -1,0 +1,54 @@
+{% extends 'quotes_list/base.html' %}
+{% load extract_tags %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title m-0">Quotes</h3>
+    </div>
+    <div class="card-body">
+        {% for quote in quotes %}
+        <blockquote class="blockquote mb-0">
+            <p>{{ quote.quote}}</p>
+            <footer class="blockquote-footer"><a href="{% url 'quotes_list:author' quote.author.id %}">{{ quote.author.fullname }}</a></footer>
+            <div class="mt-2"><small>Tags:</small>
+
+                {% for tag in quote.tags|tags %}
+                <a href="{{ tag.name }}" class='badge badge-primary'>{{ tag.name }}</a>
+                {% endfor %}
+
+            </div>
+        </blockquote>
+        {% endfor %}
+    </div>
+    <div class="card-footer">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination m-0">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title m-0">
+            Top 10 tags
+        </h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-unstyled top-tags">
+            {% for tag in tags %}
+            <li><a href="{{ tag.name }}" class="badge badge-primary">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

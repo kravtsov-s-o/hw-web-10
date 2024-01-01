@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hw-web-10"
+version = "0.0.1"
+description = "first website by django"
+authors = ["s.kravtsov <s.kravtsov@hotmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^5.0"
+psycopg2-binary = "^2.9.9"
+python-decouple = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
