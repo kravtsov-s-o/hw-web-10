@@ -95,6 +95,3 @@ def addquote(request):
 
     return render(request, 'quotes_list/add/quote.html', context={'form': AddQuote, 'tags': tags})
 
-
-def custom_404(request, exception):
-    return render(request, '404.html', status=404)

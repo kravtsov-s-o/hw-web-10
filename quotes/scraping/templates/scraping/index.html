@@ -1,0 +1,83 @@
+{% extends 'quotes_list/base.html' %}
+
+{% block content %}
+<h1>Upload data</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title m-0">Authors</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="{% url 'scraping:uploadauthors' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="custom-file mb-3">
+                                <input type="file" name="json_file" class="custom-file-input" id="customFile" accept="json" required>
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <small class="form-text text-muted">
+                                    Select JSON file
+                                </small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-title">Example:</div>
+                        <code><pre>
+[
+    {
+        "fullname": "Author Name",
+        "born_date": "March 14, 1879",
+        "born_location": "in Ulm, Germany",
+        "description": "About author",
+    }
+]
+                        </pre>  </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title m-0">Quotes</h5>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="{% url 'scraping:uploadquotes' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="custom-file mb-3">
+                                <input type="file" name="json_file" class="custom-file-input" id="customFile" required>
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <small class="form-text text-muted">
+                                    Select JSON file
+                                </small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-title">Example:</div>
+                        <code><pre>
+[
+    {
+        "tags": ["change", "deep-thoughts", "thinking", "world"],
+        "author": "Albert Einstein",
+        "quote": "\u201cThe world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.\u201d"},
+    }
+]
+                        </pre>  </code>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
