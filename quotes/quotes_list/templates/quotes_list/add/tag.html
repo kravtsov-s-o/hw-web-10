@@ -1,0 +1,27 @@
+{% extends 'quotes_list/base.html' %}
+{% load extract_tags %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title m-0">Add new tag</h3>
+    </div>
+    <div class="card-body">
+        <form action="{% url 'quotes_list:addtag' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Tag:</label>
+                {{ form.name }}
+                <span class="form-text text-danger">{{ form.errors.name.as_text }}</span>
+            </div>
+            <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+    </div>
+    <div class="card-footer">
+        <h5 class="card-title">Last added tags:</h5>
+        {% for tag in tags %}
+        <big><span class="badge badge-dark">{{tag}}</span></big>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
