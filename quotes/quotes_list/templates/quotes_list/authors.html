@@ -1,0 +1,18 @@
+{% extends 'quotes_list/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title m-0">Authors</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-unstyled">
+        {% for author in authors %}
+        <li><a href="{% url 'quotes_list:author' author.id %}">{{ author.fullname }}</a></li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+</div>
+{% endblock %}

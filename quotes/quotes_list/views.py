@@ -20,7 +20,6 @@ def main(request):
     else:
         quotes = Quote.objects.all().order_by('-created')
 
-
     items_per_page = 10
     paginator = Paginator(quotes, items_per_page)
 
@@ -37,6 +36,11 @@ def main(request):
 
     return render(request, 'quotes_list/index.html',
                   context={"quotes": quotes_page, 'page_range': page_range, 'tags': tags})
+
+
+def authors(request):
+    authors = Author.objects.all().order_by('fullname')
+    return render(request, 'quotes_list/authors.html', {"authors": authors})
 
 
 def author(request, author_id):
@@ -94,4 +98,3 @@ def addquote(request):
             return render(request, 'quotes_list/add/quote.html', {"form": form, 'tags': tags})
 
     return render(request, 'quotes_list/add/quote.html', context={'form': AddQuote, 'tags': tags})
-

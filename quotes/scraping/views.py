@@ -20,7 +20,7 @@ def uploadauthors(request):
                 description=item.get('description', '')
             )
 
-        return redirect(to='quotes_list:main')
+        return redirect(to='quotes_list:authors')
 
     return render(request, 'scraping/index.html')
 
