@@ -24,9 +24,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'quotes_list:authors' %}">Authors</span></a>
         </li>
-    </ul>
-    {% if user.is_authenticated %}
-    <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'quotes_list:addquote' %}">New Quote</span></a>
         </li>
@@ -39,7 +37,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'scraping:scraping' %}">Upload from JSON</span></a>
         </li>
+        {% endif %}
     </ul>
+    {% if user.is_authenticated %}
     <span class="navbar-text text-white">
     Welcome <b>
         {% if user.is_staff %}

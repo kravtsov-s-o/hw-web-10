@@ -25,10 +25,11 @@
                 {{ form.password }}
             </div>
             <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+            <p class="mb-0 mt-3"><a href="{% url "users:password_reset" %}" class="text-center"><i>Forgot Password?</i></a></p>
         </form>
     </div>
     <div class="card-footer">
-        <p class="m-0">If you don\'t have profile, please <a href="{% url 'users:signup' %}">sign up</a></p>
+        <p class="m-0">If you don't have profile, please <a href="{% url 'users:signup' %}">sign up</a></p>
     </div>
 </div>
 {% endblock %}
